@@ -60,7 +60,7 @@ Make sure you have the following installed:
 
 📌 Steps to Run
 1️⃣ Clone the Repository
-    git clone https://github.com/Rushikesh-264/e-tour.git
+    git clone https://github.com/vikramthakur101/E-Tour.git
     cd e-tour
 
 2️⃣ Backend Setup (Spring Boot & .NET Core)
