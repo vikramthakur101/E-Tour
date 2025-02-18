@@ -1,0 +1,252 @@
+Customer Controller:
+package com.example.controller;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
+
+import com.example.entity.Customer;
+import com.example.service.CustomerService;
+import com.example.mail.EmailSender;
+
+@RestController
+@RequestMapping("/email")
+public class EmailController {
+
+    @Autowired
+    private CustomerService customerService;
+
+    @Autowired
+    private EmailSender emailSender;
+
+    @PostMapping("/send/{email}")
+    public String sendInvoice(@PathVariable String email) {
+        Customer customer = customerService.getCustomerByEmail(email);
+        
+        if (customer == null) {
+            return "Customer not found!";
+        }
+
+        // Send email with the fetched customer data
+        emailSender.sendInvoiceEmail(customer);
+        
+        return "Email sent successfully to " + email;
+    }
+}
+
+EmailSender class:
+package com.example.mail;
+
+import java.io.FileOutputStream;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.util.Properties;
+
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Component;
+import com.itextpdf.html2pdf.HtmlConverter;
+import com.example.entity.Customer;
+
+import jakarta.mail.*;
+import jakarta.mail.internet.*;
+import jakarta.activation.*;
+
+@Component
+public class EmailSender {
+
+    @Value("${file.path}")
+    private String path;
+
+    public void sendInvoiceEmail(Customer customer) {
+        final String username = "itsme.dshruti0603@gmail.com";
+        final String password = "hyqiuocfwocsyagn";
+
+        Properties props = new Properties();
+        props.put("mail.smtp.auth", "true");
+        props.put("mail.smtp.starttls.enable", "true");
+        props.put("mail.smtp.host", "smtp.gmail.com");
+        props.put("mail.smtp.port", "587");
+
+        Session session = Session.getInstance(props,
+            new Authenticator() {
+                protected PasswordAuthentication getPasswordAuthentication() {
+                    return new PasswordAuthentication(username, password);
+                }
+            });
+
+        try {
+            // Read and update HTML invoice with customer details
+            String htmlTemplate = new String(Files.readAllBytes(Paths.get("/Users/shruti06/Documents/workspace-spring-tool-suite-4-4.27.0.RELEASE/EmailTry/src/main/resources/invoice.html")));
+
+            String updatedHtml = htmlTemplate
+                .replace("{{customer_name}}", customer.getName())
+                .replace("{{customer_email}}", customer.getEmail())
+                .replace("{{customer_phone}}", customer.getPhone())
+                .replace("{{customer_address}}", customer.getAddress());
+
+            // Convert HTML to PDF
+            String pdfFilePath = path + "/invoice_" + customer.getId() + ".pdf";
+            HtmlConverter.convertToPdf(updatedHtml, new FileOutputStream(pdfFilePath));
+
+            // Prepare email
+            MimeMessage message = new MimeMessage(session);
+            message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(customer.getEmail()));
+            message.setSubject("Your Invoice from Etour: India Pvt Ltd");
+
+            // Attach PDF
+            MimeBodyPart pdfPart = new MimeBodyPart();
+            DataSource source = new FileDataSource(pdfFilePath);
+            pdfPart.setDataHandler(new DataHandler(source));
+            pdfPart.setFileName("invoice.pdf");
+
+            Multipart multipart = new MimeMultipart();
+            multipart.addBodyPart(pdfPart);
+            message.setContent(multipart);
+
+            // Send email
+            Transport.send(message);
+            System.out.println("Invoice email sent to: " + customer.getEmail());
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+}
+
+html template:
+<div class="customer-details">
+    <h3>Customer Details</h3>
+    <p><strong>Name:</strong> {{customer_name}}</p>
+    <p><strong>Email:</strong> {{customer_email}}</p>
+    <p><strong>Phone:</strong> {{customer_phone}}</p>
+    <p><strong>Address:</strong> {{customer_address}}</p>
+</div>
+
+
+Final Email controller:
+package com.example.controllers;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
+
+import com.example.services.EmailService;
+import com.example.services.CustomerService;
+import com.example.entity.Customer;
+
+@RestController
+@RequestMapping("/email")
+public class EmailController {
+
+    @Autowired
+    private EmailService emailService;
+
+    @Autowired
+    private CustomerService customerService;
+
+    @PostMapping("/send")
+    public String sendInvoiceEmail(@RequestParam("customerEmail") String customerEmail) {
+        Customer customer = customerService.getCustomerByEmail(customerEmail);
+        
+        if (customer == null) {
+            return "Customer not found!";
+        }
+
+        emailService.sendInvoiceEmail(customer);
+        return "Email sent successfully to " + customerEmail;
+    }
+}
+
+Final EmailSender:
+package com.example.services;
+
+import java.io.FileOutputStream;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.util.Properties;
+
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Service;
+import com.itextpdf.html2pdf.HtmlConverter;
+import com.example.entity.Customer;
+
+import jakarta.mail.*;
+import jakarta.mail.internet.*;
+import jakarta.activation.*;
+
+@Service
+public class EmailService {
+
+    @Value("${file.path}")
+    private String filePath;
+
+    private final String senderEmail = "your_email@gmail.com";
+    private final String senderPassword = "your_app_password";
+
+    public void sendInvoiceEmail(Customer customer) {
+        try {
+            // Read invoice template
+            String htmlTemplate = new String(Files.readAllBytes(Paths.get("src/main/resources/invoice.html")));
+
+            // Replace placeholders with customer details
+            String updatedHtml = htmlTemplate
+                .replace("{{customer_name}}", customer.getName())
+                .replace("{{customer_email}}", customer.getEmail())
+                .replace("{{customer_phone}}", customer.getPhone())
+                .replace("{{customer_address}}", customer.getAddress());
+
+            // Convert HTML to PDF
+            String pdfFilePath = filePath + "/invoice_" + customer.getId() + ".pdf";
+            HtmlConverter.convertToPdf(updatedHtml, new FileOutputStream(pdfFilePath));
+
+            // Send email with PDF
+            sendEmailWithAttachment(customer.getEmail(), "Your Invoice", "Please find your invoice attached.", pdfFilePath);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void sendEmailWithAttachment(String recipient, String subject, String messageBody, String attachmentPath) {
+        Properties props = new Properties();
+        props.put("mail.smtp.auth", "true");
+        props.put("mail.smtp.starttls.enable", "true");
+        props.put("mail.smtp.host", "smtp.gmail.com");
+        props.put("mail.smtp.port", "587");
+
+        Session session = Session.getInstance(props, new Authenticator() {
+            protected PasswordAuthentication getPasswordAuthentication() {
+                return new PasswordAuthentication(senderEmail, senderPassword);
+            }
+        });
+
+        try {
+            MimeMessage message = new MimeMessage(session);
+            message.setFrom(new InternetAddress(senderEmail));
+            message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(recipient));
+            message.setSubject(subject);
+
+            // Create message body part
+            MimeBodyPart messageBodyPart = new MimeBodyPart();
+            messageBodyPart.setText(messageBody);
+
+            // Create attachment part
+            MimeBodyPart attachmentPart = new MimeBodyPart();
+            DataSource source = new FileDataSource(attachmentPath);
+            attachmentPart.setDataHandler(new DataHandler(source));
+            attachmentPart.setFileName("invoice.pdf");
+
+            // Combine parts
+            Multipart multipart = new MimeMultipart();
+            multipart.addBodyPart(messageBodyPart);
+            multipart.addBodyPart(attachmentPart);
+
+            message.setContent(multipart);
+
+            // Send email
+            Transport.send(message);
+            System.out.println("Invoice email sent to: " + recipient);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+}
+

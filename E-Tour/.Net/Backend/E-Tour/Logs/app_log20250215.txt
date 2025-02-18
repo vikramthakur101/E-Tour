@@ -1,0 +1,23 @@
+2025-02-15 10:52:57.982 +05:30 [INF] User profile is available. Using 'C:\Users\rushi\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-02-15 10:52:58.236 +05:30 [INF] Now listening on: http://localhost:8086
+2025-02-15 10:52:58.330 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2025-02-15 10:52:58.333 +05:30 [INF] Hosting environment: Development
+2025-02-15 10:52:58.337 +05:30 [INF] Content root path: C:\Users\rushi\source\repos\E-Tour
+2025-02-15 10:52:59.365 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:8086/swagger - null null
+2025-02-15 10:52:59.559 +05:30 [WRN] Failed to determine the https port for redirect.
+2025-02-15 10:52:59.618 +05:30 [INF] HTTP GET /swagger responded 301 in 60.2463 ms
+2025-02-15 10:52:59.643 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:8086/swagger - 301 0 null 277.8254ms
+2025-02-15 10:52:59.737 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:8086/swagger/index.html - null null
+2025-02-15 10:52:59.869 +05:30 [INF] HTTP GET /swagger/index.html responded 200 in 99.1842 ms
+2025-02-15 10:52:59.880 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:8086/swagger/index.html - 200 null text/html;charset=utf-8 142.8028ms
+2025-02-15 10:52:59.963 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:8086/_vs/browserLink - null null
+2025-02-15 10:52:59.965 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:8086/_framework/aspnetcore-browser-refresh.js - null null
+2025-02-15 10:53:00.037 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:8086/_framework/aspnetcore-browser-refresh.js - 200 13748 application/javascript; charset=utf-8 72.1141ms
+2025-02-15 10:53:00.071 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:8086/_vs/browserLink - 200 null text/javascript; charset=UTF-8 108.1087ms
+2025-02-15 10:53:00.104 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:8086/swagger/favicon-32x32.png - null null
+2025-02-15 10:53:00.139 +05:30 [INF] Sending file. Request path: '/favicon-32x32.png'. Physical path: 'N/A'
+2025-02-15 10:53:00.142 +05:30 [INF] HTTP GET /swagger/favicon-32x32.png responded 200 in 17.3625 ms
+2025-02-15 10:53:00.145 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:8086/swagger/favicon-32x32.png - 499 628 image/png 41.4494ms
+2025-02-15 10:53:00.171 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:8086/swagger/v1/swagger.json - null null
+2025-02-15 10:53:00.340 +05:30 [INF] HTTP GET /swagger/v1/swagger.json responded 200 in 161.8461 ms
+2025-02-15 10:53:00.347 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:8086/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 176.875ms
