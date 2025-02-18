@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Booking Confirmation</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        .container {
+            width: 80%;
+            margin: auto;
+            padding: 20px;
+            border: 1px solid #ddd;
+        }
+
+        .header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px;
+            text-align: center;
+        }
+
+        .content {
+            margin: 20px 0;
+        }
+
+        .footer {
+            font-size: 12px;
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        /* Style for the button */
+        .btn {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            text-align: center;
+            display: inline-block;
+        }
+
+        .btn:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h2>Booking Confirmation</h2>
+        </div>
+        <div class="content">
+            <p>Dear <b th:text="${customerName}"></b>,</p>
+            <p>Your booking for <b th:text="${tourName}"></b> on <b th:text="${bookingDate}"></b> is confirmed!</p>
+            <p><b>Transaction ID:</b> <span th:text="${transactionId}"></span></p>
+            <p><b>Total Amount:</b> $<span th:text="${totalAmount}"></span></p>
+            <p>Thank you for booking with us!</p>
+
+            <!-- Button to view booking -->
+            <button class="btn" onclick="window.location.href='/bookingSuccess'">View Your Booking</button>
+        </div>
+        <div class="footer">
+            <p>&copy; 2025 Etour Pvt Ltd. All Rights Reserved.</p>
+        </div>
+    </div>
+</body>
+</html>

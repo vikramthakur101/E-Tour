@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Booking Confirmation</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        .container {
+            width: 80%;
+            margin: auto;
+            padding: 20px;
+            border: 1px solid #ddd;
+        }
+
+        .header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px;
+            text-align: center;
+        }
+
+        .content {
+            margin: 20px 0;
+        }
+
+        .footer {
+            font-size: 12px;
+            text-align: center;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="header">
+            <h2>Booking Confirmation</h2>
+        </div>
+        <div class="content">
+            <p>Dear <b th:text="${customerName}"></b>,</p>
+            <p>Your booking for <b th:text="${tourName}"></b> on <b th:text="${bookingDate}"></b> is confirmed!</p>
+            <p><b>Transaction ID:</b> <span th:text="${transactionId}"></span></p>
+            <p><b>Total Amount:</b> $<span th:text="${totalAmount}"></span></p>
+            <p>Thank you for booking with us!</p>
+        </div>
+        <div class="footer">
+            <p>&copy; 2025 Etour Pvt Ltd. All Rights Reserved.</p>
+        </div>
+    </div>
+</body>
+
+</html>

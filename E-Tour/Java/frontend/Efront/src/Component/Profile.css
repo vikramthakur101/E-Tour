@@ -1,0 +1,82 @@
+
+/* Profile Page Styling */
+.profile-page {
+    padding-top: 2rem;
+}
+
+.profile-sidebar {
+    background: #ffffff;
+    border-radius: 15px;
+    overflow: hidden;
+}
+
+.profile-picture img {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+}
+
+.profile-name {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #2c3e50;
+}
+
+.profile-email {
+    font-size: 0.9rem;
+    color: #7f8c8d;
+}
+
+.profile-content {
+    background: #ffffff;
+    border-radius: 15px;
+    padding: 1.5rem;
+}
+
+.profile-content h4 {
+    color: #2c3e50;
+    margin-bottom: 1.5rem;
+}
+
+.profile-links {
+    list-style: none;
+    padding: 0;
+}
+
+.profile-links li {
+    margin: 0.5rem 0;
+}
+
+.profile-links li a {
+    text-decoration: none;
+    color: #34495e;
+    font-weight: 500;
+}
+
+.profile-links li a:hover {
+    color: #3D8BFD;
+}
+
+/* Progress Bar Styling */
+.progress {
+    height: 10px;
+    border-radius: 5px;
+}
+
+/* Badge Styling */
+.badge {
+    font-size: 0.9rem;
+    padding: 0.5rem 0.75rem;
+}
+
+/* Button Styling */
+.btn-outline-success, .btn-outline-primary {
+    border-width: 2px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .profile-sidebar {
+        margin-bottom: 1.5rem;
+    }
+}

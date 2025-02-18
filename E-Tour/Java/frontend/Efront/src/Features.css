@@ -1,0 +1,36 @@
+.feature-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly; 
+  background: #4189f9; 
+  padding: 20px; 
+  overflow: hidden;
+  max-width: 100%; 
+  box-sizing: border-box; 
+}
+
+
+  
+  .feature-box {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+    color: white;
+  }
+  
+  .feature-icon {
+    font-size: 40px;
+    margin-bottom: 10px;
+  }
+  
+  .feature-content h3 {
+    font-size: 16px;
+    font-weight: bold;
+  }
+  
+  .feature-content p {
+    font-size: 14px;
+    margin-top: 5px;
+  }
+  

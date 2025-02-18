@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Booking Successful</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 50px;
+        }
+
+        .success-message {
+            font-size: 24px;
+            color: green;
+            opacity: 0;
+            animation: fadeIn 3s forwards;
+        }
+
+        /* Animation for success message */
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+                transform: scale(0.5);
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        /* Style for button */
+        .btn {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            text-align: center;
+            display: inline-block;
+            margin-top: 20px;
+        }
+
+        .btn:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="success-message">
+            <h2>Booking Successful!</h2>
+            <p>Your booking has been confirmed. Thank you for choosing us!</p>
+        </div>
+        
+        <!-- Button to go back or perform other actions -->
+        <button class="btn" onclick="window.location.href='/home'">Go to Home</button>
+    </div>
+</body>
+</html>

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Booking Confirmation</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            padding: 20px;
+        }
+
+        .container {
+            width: 60%;
+            margin: auto;
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .header {
+            background-color: #007bff;
+            color: white;
+            padding: 15px;
+            text-align: center;
+            border-radius: 8px 8px 0 0;
+        }
+
+        .content {
+            margin: 20px 0;
+            font-size: 16px;
+            color: #333;
+        }
+
+        .details {
+            background: #f9f9f9;
+            padding: 15px;
+            border-radius: 5px;
+        }
+
+        .footer {
+            font-size: 12px;
+            text-align: center;
+            margin-top: 20px;
+            color: #666;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: #007bff;
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-top: 15px;
+        }
+
+        .btn:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="header">
+            <h2>Booking Confirmation</h2>
+        </div>
+        <div class="content">
+            <p>Dear <b th:text="${customerName}"></b>,</p>
+            <p>We are pleased to confirm your booking for the following details:</p>
+
+            <div class="details">
+                <p><b>Tour Name:</b> <span th:text="${tourName}"></span></p>
+                <p><b>Booking Date:</b> <span th:text="${bookingDate}"></span></p>
+                <p><b>Number of Passengers:</b> <span th:text="${numberOfPassengers}"></span></p>
+                <p><b>Payment Status:</b> <span th:text="${paymentStatus}"></span></p>
+                <p><b>Booking Status:</b> <span th:text="${bookingStatus}"></span></p>
+                <p><b>Transaction ID:</b> <span th:text="${transactionId}"></span></p>
+                <p><b>Total Amount:</b> ₹<span th:text="${totalAmount}"></span></p>
+                <p><b>Tour Amount:</b> ₹<span th:text="${tourAmount}"></span></p>
+            </div>
+
+            <p>Thank you for choosing E-Tour. We look forward to making your travel experience memorable!</p>
+
+            <a href="#" class="btn">View Booking Details</a>
+        </div>
+        <div class="footer">
+            <p>&copy; 2025 E-Tour Pvt Ltd. All Rights Reserved.</p>
+        </div>
+    </div>
+</body>
+
+</html>

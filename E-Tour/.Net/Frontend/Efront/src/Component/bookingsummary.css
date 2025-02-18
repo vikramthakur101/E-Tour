@@ -1,0 +1,190 @@
+/* Ensure content starts below navbar without affecting the navbar */
+.booking-summary-container {
+  margin-top: 70px; /* Adjust this value to match your navbar height */
+}
+
+/* Styling the main card for clean aesthetics */
+.card {
+  border-radius: 15px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  background-color: #ffffff;
+}
+
+/* Title and header text */
+h5.text-primary {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #007bff;
+}
+
+h2.fw-bold.text-dark {
+  font-size: 2.5rem;
+  margin: 0;
+  color: #333;
+}
+
+/* Payment Options and Breakdown */
+.fare-breakdown {
+  background-color: #f8f9fa;
+  padding: 1rem;
+  border-radius: 10px;
+}
+
+/* Muted text for supplementary information */
+.text-muted {
+  color: #6c757d;
+  font-size: 0.875rem;
+}
+
+/* Custom radio button styling */
+.form-check-input[type="radio"] {
+  accent-color: #007bff;
+  margin-right: 0.5rem;
+}
+
+/* Styling buttons */
+button.btn-primary {
+  background-color: #007bff;
+  border: none;
+  border-radius: 8px;
+  padding: 0.75rem;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+
+button.btn-primary:hover {
+  background-color: #0056b3;
+}
+
+/* Section title and container spacings */
+.mt-4 {
+  margin-top: 1.5rem !important;
+}
+
+.border-top {
+  border-top: 1px solid #dee2e6;
+}
+
+.border-top.mt-3 {
+  padding-top: 1rem;
+}
+
+/* Checkbox styling */
+.form-check-input[type="checkbox"] {
+  accent-color: #007bff;
+}
+
+/* Badge customization */
+.badge {
+  font-size: 0.75rem;
+  padding: 0.4em 0.6em;
+  border-radius: 8px;
+}
+
+/* Ensure floated labels and prices are vertically aligned */
+p span.float-end {
+  font-weight: 600;
+}
+
+/* Enhancing clickable links */
+a {
+  color: #007bff;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* New Enhancements */
+
+/* Hero Section */
+.header {
+  position: relative;
+  height: 300px;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  text-align: center;
+}
+
+.header .overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.header .tour-name {
+  font-size: 3rem;
+  font-weight: bold;
+  z-index: 1;
+}
+
+.header .tour-duration {
+  font-size: 1.5rem;
+  z-index: 1;
+}
+
+/* Progress Bar */
+.progress-bar {
+  height: 10px;
+  border-radius: 5px;
+}
+
+/* Card Enhancements */
+.card-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+/* Table Enhancements */
+.table {
+  margin-bottom: 0;
+}
+
+.table th,
+.table td {
+  vertical-align: middle;
+}
+
+/* Alert Styling */
+.alert {
+  margin-top: 20px;
+}
+
+/* Price Summary Enhancements */
+.price-summary {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 1rem;
+  background-color: #f8f9fa;
+  border-radius: 10px;
+}
+
+.price-summary p {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+/* Confirmation Button Enhancements */
+.confirm-button {
+  text-align: center;
+  margin-top: 2rem;
+}
+
+.confirm-button .btn {
+  width: 100%;
+  max-width: 300px;
+  font-size: 1.25rem;
+  font-weight: 600;
+  padding: 1rem;
+}

@@ -1,0 +1,54 @@
+.footer-section {
+  background-color: #111;
+  color: #fff;
+  padding: 3rem 0;
+}
+
+.footer-logo {
+  font-size: 1.8rem;
+  font-weight: bold;
+}
+
+.footer-awards img {
+  width: 50px;
+  height: 50px;
+  margin-right: 10px;
+}
+
+.destinations-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+}
+
+.destination-card {
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  width: 100%;
+  height: 80px;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.destination-card span {
+  position: absolute;
+  bottom: 5px;
+  left: 5px;
+  background: rgba(0, 0, 0, 0.5);
+  color: white;
+  font-size: 0.9rem;
+  padding: 4px 6px;
+  border-radius: 4px;
+}
+
+.social-icons svg {
+  font-size: 20px;
+  margin-right: 10px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.social-icons svg:hover {
+  color: #007bff;
+}
